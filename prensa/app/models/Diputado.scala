@@ -5,7 +5,7 @@ import play.api.libs.json.Json
 /**
   * Created by luckio on 15-05-17.
   */
-case class Diputado (diputado_id: Int,
+case class Diputado (
                     nombre: String,
                     comite: String,
                     img_url: String,
