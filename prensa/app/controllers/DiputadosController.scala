@@ -42,7 +42,7 @@ class DiputadosController @Inject()(val reactiveMongoApi: ReactiveMongoApi)(impl
     }
 
     futurePostsList.map { diputados =>
-      Ok(Json.toJson(diputados)).as("application/javascript");
+      Ok("callback("+Json.toJson(diputados)+");")
     }
   }
 
