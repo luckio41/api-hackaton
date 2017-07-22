@@ -3,6 +3,7 @@ package controllers
 import javax.inject._
 
 import models.Diputado
+import models.DiputadoNoId
 import play.api.libs.json._
 import play.api.mvc._
 import play.modules.reactivemongo._
@@ -34,10 +35,10 @@ class DiputadosController @Inject()(val reactiveMongoApi: ReactiveMongoApi)(impl
   }
 
   def all() = Action.async {
-    val futurePostsList: Future[List[Diputado]] = postsFuture.flatMap { _
+    val futurePostsList: Future[List[DiputadoNoId]] = postsFuture.flatMap { _
         .find(Json.obj())
         .sort(Json.obj("created" -> -1))
-        .cursor[Diputado](ReadPreference.primary)
+        .cursor[DiputadoNoId](ReadPreference.primary)
         .collect[List]()
     }
 
