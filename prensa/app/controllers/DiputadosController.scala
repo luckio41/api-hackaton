@@ -46,4 +46,30 @@ class DiputadosController @Inject()(val reactiveMongoApi: ReactiveMongoApi)(impl
     }
   }
 
+  def findById(id: Int) = Action.async {
+    val futurePostsList: Future[List[Diputado]] = postsFuture.flatMap { _
+        .find(Json.obj("diputado_id" -> id))
+        .sort(Json.obj("created" -> -1))
+        .cursor[Diputado](ReadPreference.primary)
+        .collect[List]()
+    }
+
+    futurePostsList.map { diputados =>
+      Ok("callback("+Json.toJson(diputados)+");").as("application/javascript");
+    }
+  }
+
+  def findByNmae(nombre: String) = Action.async {
+    val futurePostsList: Future[List[Diputado]] = postsFuture.flatMap { _
+        .find(Json.obj("nombre" -> nombre))
+        .sort(Json.obj("created" -> -1))
+        .cursor[Diputado](ReadPreference.primary)
+        .collect[List]()
+    }
+
+    futurePostsList.map { diputados =>
+      Ok("callback("+Json.toJson(diputados)+");").as("application/javascript");
+    }
+  }
+
 }

@@ -9,7 +9,9 @@ GET     /noticias/:primary/:secondary/:year/:mount/:day/:post_name   controllers
 GET     /wp-admin                   controllers.AdminController.index
 GET     /wp-login                   controllers.AdminController.login
 
-GET     /diputados/all            controllers.DiputadosController.all
+GET     /diputados/all              controllers.DiputadosController.all
+GET     /diputados/name/:nombre      controllers.DiputadosController.findByNmae(nombre: String)
+GET     /diputados/id/:id            controllers.DiputadosController.findById(id: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
