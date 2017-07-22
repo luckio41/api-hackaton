@@ -14,8 +14,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "anorm" % "2.5.1",
   "org.postgresql" % "postgresql" % "9.4.1212",
   "org.reactivemongo" %% "play2-reactivemongo" % reactiveMongoVer,
-  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % "test",
-  play.filters.hosts.AllowedHostsFilter
+  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % "test"
 )
 
 // Adds additional packages into Twirl
