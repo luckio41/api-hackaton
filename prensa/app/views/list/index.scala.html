@@ -1,0 +1,10 @@
+@(posts: List[models.Post])
+
+@main("Lista de notas") {
+    <h1>Lista</h1>
+
+    @for(u <- posts) {
+    <a href="/noticias/@u.primary/@u.secondary/@u.year/@u.mount/@u.day/@u.post_name"><h1>@u.title</h1></a>
+    <h4>@u.extract</h4>
+    }
+}

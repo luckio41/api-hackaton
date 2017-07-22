@@ -1,0 +1,7 @@
+@(post: List[models.Post])
+@for(u <- post) {
+    @main(u.title) {
+        <h1>@u.title</h1>
+        @Html(u.post_content)
+    }
+}
