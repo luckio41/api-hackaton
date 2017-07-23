@@ -73,4 +73,17 @@ class VotesController @Inject()(val reactiveMongoApi: ReactiveMongoApi)(implicit
     }
   }
 
+  def findByPartido(partido: String) = Action.async {
+    val futurePostsList: Future[List[Vote]] = postsFuture.flatMap { _
+        .find(Json.obj("partido" -> partido))
+        .sort(Json.obj("created" -> -1))
+        .cursor[Vote](ReadPreference.primary)
+        .collect[List]()
+    }
+
+    futurePostsList.map { diputados =>
+      Ok("callback("+Json.toJson(diputados)+");").as("application/javascript");
+    }
+  }
+
 }
