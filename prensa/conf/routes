@@ -15,6 +15,7 @@ GET     /diputados/id/:id            controllers.DiputadosController.findById(id
 
 GET     /votes/all                  controllers.VotesController.all
 GET     /votes/id/:id               controllers.VotesController.findByDiputadoId(id: Int)
+GET     /votes/name/:name           controllers.VotesController.findByDiputadoName(name: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
