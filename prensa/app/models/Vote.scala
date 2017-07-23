@@ -16,7 +16,8 @@ case class Vote (vote: String,
                     profesion: String,
                     region: String,
                     distrito: Int,
-                    partido: String)
+                    partido: String,
+                    vote_partido: String)
 
 object Vote {
   implicit val formatter = Json.format[Vote]
